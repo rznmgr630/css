@@ -13,39 +13,52 @@
     }
 
     .container {
+      min-height: 100vh;
       display: grid;
 
       /* =================== is used to create no of columns=================== */
       /* grid-template-columns: 33.3% 33.3% 33.3%; */
       /* grid-template-columns: 1fr 1fr 1fr; */
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
 
       /* ===================  is used to create the no of rows with height================== */
       /* grid-template-rows: 200px 300px 400px 500px;  */
       /* grid-template-rows: repeat(3, 600px); */
-      grid-template-rows: repeat(4, minmax(200px, auto));
+      /* grid-template-rows: repeat(4, minmax(200px, auto)); */
 
       /* =================== is used to define the height ================ */
       /* grid-auto-rows: 200px 200px 200px;  */
-      /* grid-auto-rows: minmax(400px, auto); */
+      grid-auto-rows: minmax(100px, auto);
 
       /* =================== to add the margin between the grid element ====================== */
       /* row-gap: 10px; */
       /* column-gap: 10px */
       gap: 10px;
 
-      /* grid columns and grid rows */
+
+      /* justify-items is used to align item horizontally and align-items is for vertically */
+      /* by default all these values are stretched */
+      /* if we change the values to other then it will only take the content width */
+      /* justify-items: center; */
+      /* align-items: center; */
 
 
+      grid-template-areas:
+        "header header header header"
+        "aside aside main main"
+        "nav nav main main"
+        "section section section section"
+        "section section section section"
+        "footer footer footer footer";
     }
 
-
+    /* 
     .container div {
       padding: 2rem;
       background-color: #5454c5;
-    }
+    } */
 
-    .container div:nth-child(even) {
+    .container>* {
       background-color: #639cd9;
       color: white;
     }
@@ -68,20 +81,53 @@
 
     .sixth {
       grid-column: 1/3;
+      grid-column: span 2;
       grid-row: 2;
+    }
+
+    header {
+      grid-area: header;
+    }
+
+    aside {
+      grid-area: aside;
+    }
+
+    nav {
+      grid-area: nav;
+    }
+
+    main {
+      grid-area: main;
+    }
+
+    footer {
+      grid-area: footer;
+    }
+
+    section {
+      grid-area: section;
     }
   </style>
 </head>
 
 <body>
   <div class="container">
+    <header>Header</header>
+    <main>Main</main>
+    <section>Section</section>
+    <aside>Aside</aside>
+    <nav>Nav</nav>
+    <footer>Footer</footer>
+  </div>
+  <!-- <div class="container">
     <div class="first">1</div>
     <div class="second">2</div>
     <div class="third">3</div>
     <div class="fourth">4</div>
     <div class="fifth">5</div>
     <div class="sixth">6</div>
-  </div>
+  </div> -->
 </body>
 
 </html>
